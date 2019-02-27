@@ -1,0 +1,27 @@
+server:
+  port: 8098
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/fqz
+    username: root
+    password: abcd1234
+    driver-class-name: com.mysql.jdbc.Driver
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    max-wait: 10000
+    max-active: 30
+    test-on-borrow: true
+  dubbo:
+    application:
+      name: sku-service
+    registry:
+      protocol: zookeeper # 重要
+      address:  127.0.0.1:3181,127.0.0.1:3182,127.0.0.1:3183
+    protocol:
+      name: dubbo
+      port: 20880
+    scan: com.fqz.sku.service
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapping/*.xml
+  type-aliases-package: com.fqz.sku.entity

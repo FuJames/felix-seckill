@@ -1,0 +1,24 @@
+server:
+  port: 8088
+
+spring:
+  freemarker:
+    templateLoaderPath: classpath:/ftl/
+    suffix: .ftl
+    charset: UTF-8
+    request-context-attribute: request
+    settings:
+      number_format: 0.##########
+  dubbo:
+    application:
+      name: seckill-example
+    protocol:
+      name: dubbo
+      port: 20880
+    registry:
+      protocol: zookeeper # 重要
+      address:  127.0.0.1:3181,127.0.0.1:3182,127.0.0.1:3183
+    scan: com.fqz.seckill.service
+
+zk:
+  address: 127.0.0.1:3181,127.0.0.1:3182,127.0.0.1:3183
